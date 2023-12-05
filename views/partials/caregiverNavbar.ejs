@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div id="navbar">
+        <div id="left_side">
+            <div id="logo">
+                <a href="/caregiverHomepage"><i class="material-icons">pets</i></a>
+                <a href="/caregiverHomepage">Paw Animal Shelter</a>
+            </div>
+        </div>  
+        <div id="right_side">
+
+            <div id="search">
+                <a href="/caregiverAnimals/?name=all&spieces=all" id="addtext">Search</a>    
+                <a href="/caregiverAnimals" id="addicon"><i class="material-icons">search</i></a>
+            </div>
+
+            <div id="animal">
+                <a href="/caregiverAddAnimal" id="addtext">Add animal</a>    
+                <a href="/caregiverAddAnimal" id="addicon"><i class="material-icons">add_circle_outline</i></a>
+            </div>
+
+
+            <div id="user_dropdown">
+
+                <div id="user_dropdown_icon">
+                    <a id="name_dropdown"><%-user_name%></a> 
+                    <i class="material-icons">expand_more</i>
+                    <i class="material-icons">account_circle</i>
+                </div>
+
+                <div id="user_dropdown_content">
+                    <a href="/caregiverUpcomingAppointments">Appointments</a>
+                    <a href="/caregiverReservations">Reservations</a>
+                    <a href="/logout">Log out</a>
+                </div>
+                
+            </div>
+
+
+        </div> 
+    </div>
+
+</body>
+</html>

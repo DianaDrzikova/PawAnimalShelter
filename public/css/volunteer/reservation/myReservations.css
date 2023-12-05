@@ -1,0 +1,150 @@
+@import "../../main.css";
+
+.content {
+    width: 1300px;
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+#back {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    left: 10%;
+    top: 17.96%;
+    color: var(--colour-secondary);
+    cursor: pointer;
+}
+
+#back a {
+    color: var(--colour-secondary);
+}
+
+#back i {
+    font-size: 60px
+}
+
+#h1AddAnimal {
+    position: absolute;
+    left: 23.28%;
+    right: 20.47%;
+    top: 17.96%;
+    bottom: 75.09%;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 61px;
+
+    color: var(--colour-secondary);
+}
+
+hr {
+    position: absolute;
+    top: 25%;
+    bottom: 75%;
+    left: 18%;
+    right: 18%;
+
+    border: 1px solid var(--colour-secondary);
+}
+
+h2 {
+    font-size: 24px;
+
+    color: var(--colour-secondary);
+}
+
+#box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 800px;
+    padding-top: 100px;
+    
+}
+
+#box h2 {
+    margin-bottom: 20px;
+}
+
+
+#dates_upcoming_con, #dates_history, #dates_un_upcoming {
+    background-color: transparent;
+    padding-bottom: 30px;
+}
+
+#upcoming_id, #history_id, #un_upcoming_id{
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: grid;
+    grid: 50px / auto auto auto;
+    width: 700px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow: 4px 4px 4px rgb(0 0 0 / 20%);
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#upcoming_id {
+    background-color: var(--colour-ternary);
+}
+
+#un_upcoming_id, #un_upcoming_id_app {
+    background-color: var(--colour-lightgray);
+}
+
+#history_id {
+    background-color: var(--colour-white);
+}
+
+#dates_upcoming_con a, #dates_history a, #dates_upcoming_un a {
+    text-align: right;
+}
+
+#dates_upcoming_con i, #dates_history i, #dates_upcoming_un i {
+    padding-top: 2px;
+    width: 20px;
+}
+
+.content{
+    padding-top: 200px;
+}
+
+#un_upcoming_id_app{
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: grid;
+    grid: 50px / auto auto;
+    width: 700px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow: 4px 4px 4px rgb(0 0 0 / 20%);
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#box_app{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 800px;
+}
+
+#box_app h2 {
+    margin-bottom: 20px;
+}

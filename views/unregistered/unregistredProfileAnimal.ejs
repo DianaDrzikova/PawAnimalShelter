@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <title>Document</title>
+    <script>
+        var availableDates = [];
+        var ResId = [];
+        function getData(data, id){
+            var date = new Date(data)
+            var year = date.getFullYear()
+            var month = date.getMonth()+1
+            var day = date.getDate()
+            var string = day + "-" + month + '-' + year
+            console.log(date)
+            availableDates.push(string)
+            ResId.push(id)
+            console.log(ResId)
+        }
+    </script>
+</head>
+<body>
+    <style>
+    .ui-widget {
+      font-family: 'Montserrat';
+      font-size: 1em;
+    }
+    .ui-widget.ui-widget-content {
+      border-radius: 20px;
+      box-shadow: 0px 16px 10px 0px rgb(0 0 0 / 20%);
+      background-color: var(--colour-lightgray);
+    }
+
+    .ui-datepicker .ui-datepicker-header {
+        background-color: transparent;
+        border: none;
+    }
+    .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+        background-color :var(--colour-white);
+        color: var(--colour-ternary);
+        border: 2px solid var(--colour-ternary);
+    }
+
+    .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+        background-color: var(--colour-ternary);
+        font-weight: normal;
+        color: var(--colour-white);
+        border: none;
+    }  
+    </style>
+    <div id="back">
+        <a id="back_link"><i class="material-icons">arrow_back</i></a>
+    </div>
+
+    <h1 id="name"><%-data[0].name%></h1>
+    <hr>
+
+    <div>
+
+    <div class="Green">
+
+        <div class="InsideAddAnimal">
+
+            <div id="outerdiv">
+                <div id="divPhoto">
+                    <img id="photo" src="<%= data[0].img%>">
+                </div>
+
+                <div id="divOther">
+                    <div>
+                        <h2 id="age"><%-data[0].age%></h2>
+                    </div>
+
+                    <div>
+                        <h2 id="spieces"><%-data[0].spieces%></h2>
+                    </div>
+
+                    <div>
+                        <h2 id="gender"><%-data[0].gender%></h2>
+                    </div>
+
+                    <div>
+                        <p id="description"><%-data[0].description%></p>
+                    </div>
+
+                </div>
+                
+            </div>
+
+            
+            <div class="edit">
+                <a href='#whitesavebtn' id="editfont">
+                    <i class="material-icons">arrow_downward</i>
+                    Reservation
+                </a>    
+            </div>
+            
+        </div>
+    </div>
+    <img class="waves" src="../images/waves.png">
+    
+    <div class="White">
+        <div class="InsideAddAnimalRow">
+            <div id="tabs-1">
+                <h2>Make a reservation:</h2>
+                <input type="text" id="datepicker" autocomplete="off" placeholder="yyyy-mm-dd">
+            </div>
+            <div id="tabs-2">
+                <h3>Volunteering info</h3>
+                <h4>When and where to come?</h4>
+                <a>Time is 02:00 PM to 04:00PM. <br>
+                    Note that it’s recommended<br>
+                    to come 15 min earlier (to get animal ready). <br>
+                    Adress is Lake st., Brno, 142 00.</a>
+                    <h4>What to bring?</h4>
+                    <a>Consectetur adipiscing elit. Suspendisse sodales.</a>
+                    <h4>Storno:</h4>
+                    <a>Ad litora torquent per conubia nostra, <br>
+                    per inceptos himenaeos.</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="WhiteSaveButton" id="whitesavebtn">
+        <button type="submit" name="submit">SAVE</button>
+    </div>
+
+
+    <div id="datareservations">
+        <% if(data.length) for(var i = 0; i < data.length; i++) {{%>
+        <div id="reservationpending">
+            <a><%-data[i].date%></a>
+            <script> getData('<%-data[i].date%>', '<%-data[i].reservation_id%>') </script>
+            <a id="upcoming_id_icon"><i class="material-icons">chevron_right</i></a>
+        </div>
+        <% }} %>
+    </div>
+
+    <div id="dialog" title="Ooops!">
+        <p>You are already registered on this day!</p>
+        
+    </div>
+
+    <script>
+
+        function available(date) {
+            dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+            console.log(dmy+' : '+($.inArray(dmy, availableDates)));
+            if ($.inArray(dmy, availableDates) != -1) {
+            return [true, "","Available"];
+            } else {
+            return [false,"","unAvailable"];
+            }
+        }
+
+        $( function() {
+            $( "#dialog" ).dialog({
+                autoOpen: false,
+            });
+        });
+
+
+        $( function() {
+            $( "#datepicker" ).datepicker({
+                beforeShowDay: available
+            });
+
+        });
+
+        var element = document.getElementById('back_link');
+        element.setAttribute('href', document.referrer);
+
+        element.onclick = function() {
+            history.back();
+            return false;
+        }
+
+        const save_click = document.getElementById("whitesavebtn")
+
+        save_click.addEventListener('click', (e) => {
+            url = "/signUp"
+            window.location.href = url
+        })
+
+    </script>
+
+</body>
+</html>

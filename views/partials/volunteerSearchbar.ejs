@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <title>Document</title>
+    <style>
+      .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+          background-color :var(--colour-white);
+          color: var(--colour-ternary);
+          border: 2px solid var(--colour-ternary);
+      }
+  
+      .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+          background-color: var(--colour-ternary);
+          font-weight: normal;
+          color: var(--colour-white);
+          border: none;
+      }    
+  
+      .ui-widget {
+        font-family: 'Montserrat';
+        font-size: 1em;
+      }
+  
+  
+      .ui-widget.ui-widget-content {
+        border-top: none;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+      }
+  
+      #ui-datepicker-div{
+        width: 362.5px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        box-shadow: 0px 16px 10px 0px rgb(0 0 0 / 20%);
+      }
+  
+    </style>
+</head>
+<body>
+    <h1>Browse animal profiles</h1>
+    <div class="Search">
+
+      <div class="drop_date">
+        <img src="../images/calendar.png" alt="paw">
+        <form class="form_name">
+          <input type="text" id="datepicker" autocomplete="off" placeholder="Today" value="">
+        </form>
+      </div>
+
+
+      <div class="drop_spieces">
+        <button onclick="myFunction()" id="button_id" class="drop_spieces_btn"><img src="../images/cat.png" alt="cat"><%-spieces%></button>
+        <div id="my_drop_spieces" class="drop_spieces_content">
+          <a class="all" onClick="is_Clicked('all')">All</a>
+          <a class="cat" onClick="is_Clicked('cat')">Cat</a>
+          <a class="dog" onClick="is_Clicked('dog')">Dog</a>
+          <a class="rabbit" onClick="is_Clicked('rabbit')">Rabbit</a>
+        </div>
+      </div>
+
+      <div id="search_class"><button class="search_btn" onclick="loadDoc1()">Search</button></div>
+    </div>
+    
+    <script>
+
+        var spieces = "all";
+        
+        
+        function is_Clicked(param){
+          spieces = param
+          console.log("inside", spieces);
+          const Spieces = spieces.charAt(0).toUpperCase() + spieces.slice(1);
+          document.getElementById("button_id").innerHTML = '<img src="../images/cat.png" alt="cat">' + Spieces;
+        }
+
+                
+        function loadDoc1() {
+          console.log("outside", spieces);
+          datepicker = $("#datepicker").val()
+          console.log(datepicker)
+          var date = "today"
+
+          if(datepicker){
+            date = new Date(datepicker)
+            console.log(date)
+            date.setHours(0,0,0,0);
+            console.log(date)
+          }
+
+
+          var endpoint = ""
+
+          
+
+          if('<%-role%>' == "volunteer"){
+            endpoint = "volunteerFoundAnimals"
+          }else{
+            endpoint = "unregistredFoundAnimals"
+          }
+
+
+          const xhttp = new XMLHttpRequest();
+          xhttp.onload = function() {
+            document.getElementById("found_id").innerHTML = this.responseText;
+          }
+
+          if(spieces == "all" && date == "today"){
+              console.log("not filtered")
+              xhttp.open("GET", endpoint+"/?date=today&spieces=all");    
+              xhttp.send();
+
+          }else if(date === "today"){
+            console.log("filtered by spieces")
+            xhttp.open("GET", endpoint+"/?date=today&spieces="+spieces);    
+            xhttp.send(spieces);
+
+          }else if(spieces === "all"){
+            console.log("filtered by date")
+            xhttp.open("GET", endpoint+"/?date="+date+"&spieces=all");    
+            xhttp.send(name);
+
+          }else{
+            console.log("filtered by date and spieces")
+            xhttp.open("GET", endpoint+"/?date="+date+"&spieces="+spieces);    
+            xhttp.send(name, spieces);
+
+          }
+        }
+
+                
+        $( function() {
+            $( "#datepicker" ).datepicker({
+                dateFormat:"yy-mm-dd",
+                minDate: 0,
+                maxDate: "+0M +7D"
+            });
+        });
+
+        </script>
+
+</body>
+</html>

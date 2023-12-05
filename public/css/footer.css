@@ -1,0 +1,93 @@
+@import"../main.css";
+
+.Content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 1300px;
+}
+
+.footer {
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colour-ternary);
+    width: 100%;
+}
+
+.footer .Content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#contacts {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+#contacts #Left {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+#contacts #Right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 49px;
+}
+
+#contacts .h1, #contacts .h2, #contacts .h3, #socials .h1 {
+    margin: 0;
+    padding: 0;
+    color: var(--colour-secondary);
+}
+
+#contacts .h1, #socials .h1 {
+    font-size: 24px;
+    font-weight: 1000;
+    padding-bottom: 20px;
+}
+
+#contacts .h2 {
+    font-size: 18px;
+    font-weight: 1000;
+    padding-top: 5px;
+}
+
+#contacts .h3 {
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+#socials {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#socials .h1 {
+    padding-bottom: 25pxpx;
+}
+
+#socials div {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 20px;
+    padding-bottom: 50px;
+}
+
+#socials .img {
+    border-radius: 0;
+    width: 50px;
+    height: 50px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="InsideAddAnimal">
+
+        <div id="outerdiv">
+            <div id="divPhoto">
+                <img id="photo" src="<%= data[0].img%>">
+            </div>
+
+            <div id="divOther">
+                <div>
+                    <h2 id="age"><%-data[0].age%></h2>
+                </div>
+
+                <div>
+                    <h2 id="spieces"><%-data[0].spieces%></h2>
+                </div>
+
+                <div>
+                    <h2 id="gender"><%-data[0].gender%></h2>
+                </div>
+
+                <div>
+                    <p id="description"><%-data[0].description%></p>
+                </div>
+
+            </div>
+            
+        </div>
+        
+
+
+        <div class="edit">
+            <a href='/caregiverProfileAnimal/editAnimal/<%-data[0].animal_id%>'><i class="material-icons">edit</i>Edit profile</a>    
+        </div>
+
+
+        <div class="ProfileBtns">
+            <div onClick="is_Clicked('/caregiverAllWalkies/', '<%-data[0].name%>')"><img src="/images/reservations.png" alt="Reservations"><h2>Reservations</h2></div>
+            <div onClick="is_Clicked('/caregiverSetWalkies/')"><img src="/images/schedule.png" alt="Schedule"><h2>Schedule</h2></div>
+            <div onClick="is_Clicked('/caregiverVetAppointments/')"><img src="/images/vet.png" alt="Vet"><h2>Veterinarian</h2></div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="back">
+        <a href="\caregiverProfileAnimal\<%-data[0].animal_id%>"><i class="material-icons">arrow_back</i></a>
+    </div>
+    
+
+    <h1 id="h1AddAnimal">Edit Animal</h1>
+    <hr id="hrAddAnimal">
+    
+    <div class="InsideAddAnimal">
+        
+        <form action='/caregiverProfileAnimal/<%-data[0].animal_id%>?_method=PUT' method="post" enctype="multipart/form-data">
+
+            <div id="outerdiv">
+
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_default_img" value="<%-data[0].img%>">
+
+                <div id="divPhoto">
+                    <h2 id="h2AddAnimal">Photo:</h2>
+                    <input id="Photo" type="file" class="custom-file-input" name="img" placeholder="Add photo" value="<%-data[0].img%>">
+                </div>
+    
+                <div id="divOther">
+                    <div>
+                        <h2 id="h2AddAnimal">Name:</h2>
+                        <input id="Name" type="text" name="name_animal" value="<%-data[0].name%>" placeholder="Name" autocomplete="off">
+                    </div>
+                    
+                    <div>
+                        <h2 id="h2AddAnimal">Species:</h2>
+                        <input id="Species" type="text" name="spieces" value="<%-data[0].spieces%>" placeholder="Species" autocomplete="off">
+                    </div>
+                    
+                    <div>    
+                        <h2 id="h2AddAnimal">Age:</h2>
+                        <input id="Age" type="text" name="age" value="<%-data[0].age%>" placeholder="Age" autocomplete="off">
+                    </div>
+                    
+                    <div>
+                        <h2 id="h2AddAnimal">Gender:</h2>
+                        <input id="Gender" type="text" name="gender" value="<%-data[0].gender%>" placeholder="Age" autocomplete="off">
+                    </div>
+                    
+                    <div>
+                        <h2 id="h2AddAnimal">Description:</h2>
+                        <textarea id="Description" id="custom-descrip-input" type="text" name="description" placeholder="Description" autocomplete="off"><%-data[0].description%></textarea>
+                            
+                    </div>
+
+                </div>
+
+            </div>
+                
+                <div>
+                    <button type="submit" name="submit">SAVE</button>
+                </div>      
+        </form>
+
+    </div>
+
+    <div class="delete">
+        <a class="delete" data-doc="<%=data[0].animal_id%>">Delete profile</a>
+    </div>
+
+    <script>
+
+    const trashcan = document.querySelector('a.delete')
+        
+    console.log("<%-data[0].img%>");
+
+    trashcan.addEventListener('click', (e) => {
+        const endpoint = '/caregiverProfileAnimal/<%-data[0].animal_id%>';
+        fetch(endpoint , {
+            method: 'DELETE'
+        })
+        .then((response => response.json()))
+        .then((data) => window.location.href = data.redirect) 
+        .catch(err => console.log(err))
+    })
+        
+    const image_input = document.querySelector(".custom-file-input");
+
+    image_input.style.backgroundImage = `url("<%-data[0].img%>")`;
+    image_input.style.content = "";
+    image_input.addEventListener("change", function() {
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+            const uploaded_image = reader.result;
+            image_input.style.backgroundImage = `url(${uploaded_image})`;
+            image_input.style.content = "";
+        });
+        reader.readAsDataURL(this.files[0]);
+    });
+
+
+    </script>
+
+
+
+</body>
+</html>

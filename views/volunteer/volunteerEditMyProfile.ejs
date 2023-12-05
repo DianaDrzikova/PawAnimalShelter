@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="back">
+        <a href="\volunteerMyProfile\<%-data[0].id%>"><i class="material-icons">arrow_back</i></a>
+    </div>
+    
+    <h1 id="name">Edit My Profile</h1>
+    <hr>
+    
+    <div class="InsideAddAnimal">
+        
+    <form action='/volunteerMyProfile/<%-data[0].id%>?_method=PUT' method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="_default_img" value="<%-data[0].img%>">
+        
+        <div id="outerdiv">
+                
+            <div id="divPhoto">
+                <h2 id="pic">Photo:</h2>
+                <input id="Photo" type="file" class="custom-file-input" name="img" placeholder="Add photo" value="<%-data[0].img_par%>">
+
+            </div>
+
+            <div id="divOther">
+                <div>
+                    <h2 id="firstname">First Name:</h2>
+                </div>
+
+                <div>
+                    <h2 id="lastname">Last Name:</h2>
+                </div>
+
+                <div>
+                    <h2 id="birthdate">Date Of Birth:</h2>
+                </div>
+                
+                <div>
+                    <h2 id="phone">Phone Number:</h2>
+                </div>
+                
+                <div>
+                    <h2 id="email">E-mail:</h2>
+                </div>
+                
+                <div>
+                    <h2 id="address">Address:</h2>
+                </div>
+                
+            </div>
+            
+            <div id="divOther">
+
+                <div>
+                    <input id="Firstname" type="text" name="first_name" value="<%-data[0].first_name%>" placeholder="First Name" autocomplete="off">
+                </div>
+
+                <div>
+                    <input id="Lastname" type="text" name="last_name" value="<%-data[0].last_name%>" placeholder="Last Name" autocomplete="off">
+                </div>
+
+                <div>
+                    <input id="Birthdate" type="text" name="date_of_brith" value="<%-data[0].birthday%>" placeholder="Date Of Birth" autocomplete="off">
+                </div>
+
+                <div>
+                    <input id="Phone" type="text" name="phone_number" value="<%-data[0].phone_number%>" placeholder="Phone Number" autocomplete="off">
+                </div>
+
+                <div>
+                    <input id="Email" type="text" name="e_mail" value="<%-data[0].e_mail%>" placeholder="E-mail" autocomplete="off">
+                </div>
+
+                <div>
+                    <input id="Address" type="text" name="adress" value="<%-data[0].adress%>" placeholder="Address" autocomplete="off">
+                </div>
+
+                
+            </div>
+
+            <div>
+                <button type="submit" name="submit">SAVE</button>
+            </div>
+            
+        </div>
+
+        </form>
+    </div>
+
+        <div class="delete">
+            <a class="delete" data-doc="<%=data[0].animal_id%>">Delete profile</a>
+        </div>
+
+
+    <script>
+
+        const trashcan = document.querySelector('a.delete')
+            
+        console.log("<%-data[0].img%>");
+    
+        trashcan.addEventListener('click', (e) => {
+            const endpoint = '/volunteerProfileAnimal/<%-data[0].id%>';
+            fetch(endpoint , {
+                method: 'DELETE'
+            })
+            .then((response => response.json()))
+            .then((data) => window.location.href = data.redirect) 
+            .catch(err => console.log(err))
+        })
+            
+        const image_input = document.querySelector(".custom-file-input");
+    
+        image_input.style.backgroundImage = `url("<%-data[0].img%>")`;
+        image_input.style.content = "";
+        image_input.addEventListener("change", function() {
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+                const uploaded_image = reader.result;
+                image_input.style.backgroundImage = `url(${uploaded_image})`;
+                image_input.style.content = "";
+            });
+            reader.readAsDataURL(this.files[0]);
+        });
+    
+    
+        </script>
+        
+</body>
+</html>

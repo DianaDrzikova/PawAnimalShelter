@@ -1,0 +1,239 @@
+@import "../../main.css";
+
+#back {
+    padding-top: 50px;
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    left: 10%;
+    top: 17.96%;
+}
+
+#back a {
+    color: var(--colour-secondary);
+}
+
+#back i {
+    font-size: 60px
+}
+
+#name {
+    padding-top: 50px;
+    position: absolute;
+    left: 23.28%;
+    right: 20.47%;
+    top: 17.96%;
+    bottom: 75.09%;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 61px;
+
+    color: var(--colour-secondary);
+}
+
+hr {
+    margin-top: 50px;
+    position: absolute;
+    top: 25%;
+    bottom: 75%;
+    left: 18%;
+    right: 18%;
+
+    border: 1px solid var(--colour-secondary);
+}
+
+h2 {
+    font-size: 24px;
+}
+
+.InsideAddAnimal{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    gap: 40px;
+    width: 1300px;
+    height: 1080px;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.InsideAddAnimal #outerdiv{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.InsideAddAnimal #divPhoto{
+    display: grid;
+    margin-right: 90px;
+}
+
+.InsideAddAnimal #divOther{
+    display: grid;
+    width: 220px;
+}
+
+.InsideAddAnimal #divOther:nth-child(2) h2, #pic{
+    opacity: 50%;
+}
+
+.InsideAddAnimal #divOther h2{
+    padding: 5px;
+}
+
+.InsideAddAnimal #divOther div {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+#description {
+    padding-top: 30px;
+}
+
+#photo {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    border:3px solid var(--colour-ternary);
+}
+
+.verification{
+    padding-top: 50px;
+    position: absolute;
+    width: 200px;
+    height: 25px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    top: 27.7%;
+    left: 28%;
+}
+
+.verification h2 {
+    color: var(--colour-ternary);
+}
+
+.verification img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    opacity: 80%;
+}
+
+.edit, .delete {
+    padding-top: 50px;
+    position: absolute;
+    width: 200px;
+    height: 25px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.edit {
+    top: 20%;
+    left: 70%;
+}
+
+.edit a {
+    color: var(--colour-ternary);
+}
+
+.delete {
+    top: 19%;
+    color: red;
+    left: 62%;
+    cursor: pointer;
+}
+
+#Firstname, #Lastname, #Birthdate, #Phone, #Email, #Address, #Photo {
+    border-radius: 4px;
+    border:1px solid var(--colour-secondary);
+    background: var(--colour-lightgray);
+}
+
+#Firstname, #Lastname, #Birthdate, #Phone, #Email, #Address {
+    padding-left: 10px;
+    width: 300px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 4.5px;
+    margin-bottom: 4.5px;
+}
+
+#Photo {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+}
+
+.custom-file-input {
+    color: transparent;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input::before {
+    content: 'Select photo';
+    color: var(--colour-secondary);
+    font-family: 'Montserrat';
+    font-size: 24px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+
+    padding-top: 45%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.custom-file-input:active {
+    outline: 0;
+}
+.custom-file-input:active::before {
+    background: transparent; 
+}
+
+.custom-file-input::after {
+    content: 'Selected photo';
+}
+
+.InsideAddAnimal button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 35px;
+    gap: 20px;
+    cursor: pointer;
+
+    position: absolute;
+    left: 46.3%;
+    right: 46.25%;
+    top: 80.93%;
+    bottom: 14.44%;
+
+    background: var(--colour-white);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    font-weight: bold;
+}

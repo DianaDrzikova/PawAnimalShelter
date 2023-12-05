@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="back">
+        <a href="/caregiverAnimals/?name=all&spieces=all"><i class="material-icons">arrow_back</i></a>
+    </div>
+
+    <h1 id="h1AddAnimal">Add Animal</h1>
+    <hr>
+    <div class="InsideAddAnimal">
+        
+        <form action="/caregiverAddAnimal/submit" method="post" enctype="multipart/form-data">
+            
+            <div id="outerdiv">
+                
+                <div id="divPhoto">
+                    <h2 id="h2AddAnimal">Photo:</h2>
+                    <input id="Photo" type="file" class="custom-file-input" name="img" placeholder="Add photo" >
+                    
+                </div>
+    
+                <div id="divOther">
+                    <div>
+                        <h2 id="h2AddAnimal">Name:</h2>
+                        <input id="Name" type="text" name="name_animal" placeholder="Name" autocomplete="off">
+                    </div>
+                    
+                    <div>
+                        <h2 id="h2AddAnimal">Species:</h2>
+                        <input id="Species" type="text" name="spieces" placeholder="Spieces" autocomplete="off">
+                    </div>
+                    
+                    <div>    
+                        <h2 id="h2AddAnimal">Age:</h2>
+                        <input id="Age" type="text" name="age" placeholder="Age" autocomplete="off">
+                    </div>
+                    
+                    <div>
+                        <h2 id="h2AddAnimal">Gender:</h2>
+                        <input id="Gender" type="text" name="gender" placeholder="Gender" autocomplete="off">
+                    </div>
+                    
+                    <div>
+                        <h2 id="h2AddAnimal">Description:</h2>
+                        <textarea id="Description" type="text" name="description" placeholder="Description" autocomplete="off"></textarea>
+                    </div>
+
+                </div>
+
+            </div>
+                
+            <div>
+                <button type="submit" name="submit">SAVE</button>
+            </div>
+
+        </form>
+
+    </div>
+
+    <script>
+
+    const image_input = document.querySelector(".custom-file-input");
+    image_input.addEventListener("change", function() {
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+            const uploaded_image = reader.result;
+            image_input.style.backgroundImage = `url(${uploaded_image})`;
+            image_input.style.content = "";
+        });
+        reader.readAsDataURL(this.files[0]);
+    });
+
+    </script>
+
+
+</body>
+
+
+
+</html>

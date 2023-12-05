@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="back">
+        <a href="\caregiverAllWalkies\<%-animal_id%>"><i class="material-icons">arrow_back</i></a>
+    </div>
+
+    <h1 id="date"><%=date[0]%></h1>
+    <hr>
+
+    <div class="Insides">
+
+        <div id="rescard">
+            <div id="animalres">
+                <h2>Animal</h2>
+    
+                
+                <div >
+                    <img id="photo" src="<%= data[0].img%>">
+                </div>
+                
+                <div >
+                    <a id="name"><%= data[0].name%></as>
+                </div>
+
+                <div>
+                    <a id="age"><%-data[0].age%></a>
+                </div>
+    
+                <div>
+                    <a id="spieces"><%-data[0].spieces%></a>
+                </div>
+
+    
+            </div>
+
+            <div class="line"></div>
+    
+            <div id="userres">
+                <h2>Volunteer</h2>
+
+                
+
+                <div>
+                    <a id="userprofile" data-doc='<%=reservation_id%>'>Go to profile<i class="material-icons">chevron_right</i></a>
+                </div>
+    
+            </div>
+    
+        </div>
+
+        <div id="pendingButtons">
+            <a id="stornores"> </a>
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+        const trashcan = document.querySelector('a#stornores')
+        
+
+        trashcan.addEventListener('click', (e) => {
+            const endpoint = '/caregiverAllWalkies/<%-animal_id%>';
+
+
+            fetch(endpoint , {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                
+                body : JSON.stringify({reservation_id: '<%-reservation_id%>'}),
+            })
+            .then( window.location.href = endpoint) 
+        })
+
+        const user_button = document.querySelector('a#userprofile')
+
+        user_button.addEventListener('click', (e) => {
+            var data = user_button.getAttribute("data-doc");
+            const endpoint = ""
+
+
+            fetch(endpoint , {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+
+                    
+                })
+                .then( window.location.href = endpoint ) 
+        })
+
+        var can_storno = false
+
+
+        window.onload = () =>{
+            const today = new Date()
+        
+            //var year = today.getFullYear();
+            //var mes = today.getMonth()+1;
+            //var dia = today.getDate();
+            //const date1 =year+"-"+mes+"-"+dia;
+            
+            const reservation = new Date('<%-data[0].date%>')
+            console.log(reservation, " > ", today)
+        
+            //year = reservation.getFullYear();
+            //mes = reservation.getMonth()+1;
+            //dia = reservation.getDate();
+        //
+            //const date2 =year+"-"+mes+"-"+dia;
+
+
+        
+            if(reservation > today){
+                document.getElementById("stornores").innerHTML = "Storno"
+                can_storno = false
+            }else{
+                document.getElementById("stornores").style.display = "none";
+            }
+        
+        }
+
+
+        if(can_storno){
+            const trashcan = document.querySelector('#pendingButtons')
+            
+            trashcan.addEventListener('click', (e) => {
+                const endpoint = '/volunteerReservationCard/<%-data[0].reservation_id%>';
+                console.log("storno")
+    
+                fetch(endpoint , {
+                    method: 'PUT',
+                })
+                .then((response => response.json()))
+                .then((data) => window.location.href = data.redirect) 
+                .catch(err => console.log(err))
+            })
+        }
+
+
+    </script>
+</body>
+</html>

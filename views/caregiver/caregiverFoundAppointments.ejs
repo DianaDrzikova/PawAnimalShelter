@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div id="box">
+    <div class="res_class" id="res_id1">   
+      <h2>Upcoming apppointments:</h2>
+        <% if(app_data_c.length){ for(var i = 0; i< app_data_c.length; i++) {%>
+          <div id="res_div1" class="res_div" >
+            <a id="a1"><%-app_data_c[i].name%></a>
+            <a id="a2"><%-app_data_c_print[i]%></a>
+            <a class="delete_reservation" onClick="deleteFunc('<%=app_data_c[i].appointment_id%>')"><i class="material-icons">close</i></a>
+          </div>
+
+        <% } }else{ %>
+
+          No data ever existed.
+  
+        <% } %>
+      </div>
+      <div class="res_class" id="res_id2">   
+        <h2>Requested:</h2> 
+        <% if(app_data_u.length){ for(var i = 0; i< app_data_u.length; i++) {%>
+          <div id="res_div2" class="res_div" >
+            <a id="a2"><%-app_data_u[i].name%></a>
+            <a id="a2"><%-app_data_u[i].type%></a>
+            <a class="delete_reservation" onClick="deleteFuncAp('<%=app_data_u[i].appointment_id%>')"><i class="material-icons">close</i></a>
+          </div>
+
+        <% } }else{ %>
+
+          No data ever existed.
+  
+        <% } %>
+      </div>
+
+    </div>
+    <div id="dialog" title="Ooops!">
+      <p>This date is already set. (Walkies or Appointment) </p>
+      
+  </div>
+
+    <script>
+          $( function() {
+            $( "#dialog" ).dialog({
+                autoOpen: false,
+            });
+        });
+      function deleteFuncAp(id){
+            console.log(id)
+            $.ajax({
+                type: 'DELETE',
+                url: '/caregiverFoundAppointments/'+id,
+                success: function(){
+                  
+                }
+            });
+        }
+    </script>
+</body>
+</html>

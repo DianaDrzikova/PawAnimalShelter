@@ -1,0 +1,106 @@
+@import "../main.css";
+
+body {
+    background-image: url("../../images/signup.png");
+}
+
+.signup {
+    width: 700px;
+    height: 800px;
+    margin: 0 auto;
+    padding: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(59, 62, 63, 0.2);
+    box-shadow: 8px 8px 8px rgb(0 0 0 / 13%);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+}
+
+input {
+    width: 400px;
+    height: 40px;
+
+    color: var(--colour-secondary);
+    background-color: var(--colour-white);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: var(--colour-white);
+    font-weight: 400;
+    font-size: 60px;
+    padding-bottom: 30px;
+}
+
+
+h2 {
+    width: 400px;
+    display: flex;
+    justify-content: start;
+
+    color: var(--colour-white);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 100;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 25px;
+    gap: 20px;
+    margin-top: 20px;
+
+    background: var(--colour-ternary);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    font-weight: bold;
+
+    color: var(--colour-white);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+.check {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 400px;
+    padding-bottom: 20px;
+}
+
+#checkbox {
+    padding: 0;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+}
+
+h3 {
+    color: var(--colour-white);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 100;
+    font-size: 14px;
+    margin-left: 5px;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="back">
+        <a href="\adminHomepage"><i class="material-icons">arrow_back</i></a>
+    </div>
+
+    <h1 id="name"><%-data[0].first_name%>'s profile</h1>
+    <hr>
+
+    <div class="InsideAddAnimal">
+
+        <div id="outerdiv">
+
+            <div id="divOther">
+                <div>
+                    <h2 id="firstname">First Name:</h2>
+                </div>
+
+                <div>
+                    <h2 id="lastname">Last Name:</h2>
+                </div>
+
+                
+                <div>
+                    <h2 id="email">E-mail:</h2>
+                </div>
+                
+                <div>
+                    <h2 id="address">Role:</h2>
+                </div>
+                
+            </div>
+
+            <div id="divOther">
+                <div>
+                    <h2 id="firstname"><%-data[0].first_name%></h2>
+                </div>
+
+                <div>
+                    <h2 id="lastname"><%-data[0].last_name%></h2>
+                </div>
+
+                
+                <div>
+                    <h2 id="email"><%-data[0].e_mail%></h2>
+                </div>
+                
+                <div>
+                    <h2 id="address"><%-data[0].role%></h2>
+                </div>
+
+            </div>
+
+            
+        </div>
+        
+        <div class="delete">
+            <a class="delete">Delete profile</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        const trashcan = document.querySelector('a.delete')
+        
+        console.log("<%-data[0].img%>");
+    
+        trashcan.addEventListener('click', (e) => {
+            const endpoint = '/adminProfileUser/<%-data[0].id%>';
+            fetch(endpoint , {
+                method: 'DELETE'
+            })
+            .then((response => response.json()))
+            .then((data) => window.location.href = data.redirect) 
+            .catch(err => console.log(err))
+        })
+
+    
+    </script>
+</body>
+</html>

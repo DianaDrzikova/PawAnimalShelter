@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="back">
+        <a id="back_link"><i class="material-icons">arrow_back</i></a>
+    </div>
+
+    <h1 id="name"><%-data[0].name%></h1>
+    <hr>
+
+    <div class="InsideAddAnimal1">
+
+        <div id="outerdiv">
+            <div id="divPhoto">
+                <img id="photo" src="<%= data[0].img%>">
+            </div>
+
+            <div id="divOther">
+                <div>
+                    <h2 id="age"><%-data[0].age%></h2>
+                </div>
+
+                <div>
+                    <h2 id="spieces"><%-data[0].spieces%></h2>
+                </div>
+
+                <div>
+                    <h2 id="gender"><%-data[0].gender%></h2>
+                </div>
+
+                <div>
+                    <p id="description"><%-data[0].description%></p>
+                </div>
+
+            </div>
+            
+        </div>
+        
+        <%- include('veterinarianHealthRecord') %>
+    </div>
+
+
+    <script>
+        var element = document.getElementById('back_link');
+        element.setAttribute('href', document.referrer);
+
+        element.onclick = function() {
+            history.back();
+            return false;
+        }
+    </script>
+</body>
+</html>

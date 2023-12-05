@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <div class="content">
+        <div class="signup">
+            <form class="signup" onsubmit="return validateForm()" method="post">
+                <h1>Sign Up</h1>
+                <h2>First Name:</h2>
+                <input type="text" name="first_name" id="first_name" placeholder="First Name">
+                <h2>Last Name:</h2>
+                <input type="text" name="last_name"  id="last_name" placeholder="Last Name">
+                <h2>E-Mail:</h2>
+                <input type="text" name="email" id="email" placeholder="E-Mail">
+                <h2>Password:</h2>
+                <input type="password" name="password" placeholder="Password" autocomplete="off" id="myInput1">
+                <h2>Repeat Password:</h2>
+                <input type="password" name="r_password" placeholder="Repeat Password" autocomplete="off" id="myInput2">
+                <div class="check">
+                    <input type="checkbox" onclick="showPsw1(), showPsw2()" id="checkbox">
+                    <h3>Show Password</h3>
+                </div> 
+                <button type="submit" name="submit">
+                    Save
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showPsw1() {
+        var x = document.getElementById("myInput1");
+        if (x.type == "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+        }
+        
+        function showPsw2() {
+        var x = document.getElementById("myInput2");
+        if (x.type == "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+        }
+
+        var text_max = 200;
+        $('#count_message').html('0 / ' + text_max );
+
+        $('#text').keyup(function() {
+        var text_length = $('#text').val().length;
+        var text_remaining = text_max - text_length;
+        
+        $('#count_message').html(text_length + ' / ' + text_max);
+        });
+        
+    </script>
+    <script type="text/javascript">
+        function validateForm() {
+          var a = document.getElementById("first_name").value;
+          var b = document.getElementById("last_name").value;
+          var c = document.getElementById("email").value;
+          var d = document.getElementById("password").value;
+          var e = document.getElementById("r_password").value;
+          if (a == null || a == "", b == null || b == "", c == null || c == "", d == null || d == "", e == null || e == "") {
+            alert("Please Fill All Required Field");
+            return false;
+          }
+
+          if( d != e){
+            alert("Missmatching passwords");
+            return false;
+          }
+        }
+      </script>
+    
+</body>
+
+</html>

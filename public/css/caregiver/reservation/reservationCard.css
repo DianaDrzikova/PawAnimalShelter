@@ -1,0 +1,197 @@
+@import "../../main.css";
+
+#back {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    left: 10%;
+    top: 17.96%;
+    color: var(--colour-secondary);
+    cursor: pointer;
+}
+
+#back a {
+    color: var(--colour-secondary);
+}
+
+#back i {
+    font-size: 60px
+}
+
+#date {
+    position: absolute;
+    left: 23.28%;
+    right: 20.47%;
+    top: 17.96%;
+    bottom: 75.09%;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 61px;
+
+    color: var(--colour-secondary);
+}
+
+hr {
+    position: absolute;
+    top: 25%;
+    bottom: 75%;
+    left: 18%;
+    right: 18%;
+
+    border: 1px solid var(--colour-secondary);
+}
+
+.Insides{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 40px;
+    width: 1000px;
+    height: 1080px;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+#rescard{
+    background-color: var(--colour-white);
+    border: 1px solid var(--colour-white);
+    border-radius: 15px 15px 15px 15px;
+    display: flex;
+    height: 500px;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 4px 4px 4px rgb(0 0 0 / 20%);
+}
+
+#rescard img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+#date h2{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+
+#rescard #name{
+    font-size: 30px;
+}
+
+
+#animalres, #userres{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#headerres{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#stornores {
+    border: none;
+    color: red;
+    width: 100px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 20px;
+    font-size: 24px;
+}
+
+#userres div:nth-child(6), #animalres div:nth-child(7) {
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+
+#userprofile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colour-ternary);
+    width: 200px;
+    height: 40px;
+    border-radius: 30px;
+    color: var(--colour-white);
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+
+.line {
+    width: 1px;
+    height: 350px;
+    background-color: var(--colour-secondary);
+}
+
+
+#confirmR, #declineR {
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
+}
+
+#confirmR {
+    background-color: var(--colour-ternary);
+}
+
+#declineR {
+    background-color: red;
+}
+
+#pendingButtons{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    position: absolute;
+    width: 200px;
+    height: 25px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    line-height: 29px;
+    top: 20%;
+    left: 66%;
+    cursor: pointer;
+
+    font-weight: bold;
+    font-size: large;
+    color: var(--colour-white);
+}
+
+#TimeAP{
+    font-size: 18px;
+    padding-bottom: 0;
+    padding-top: 5px;
+}
+
+#appointmentform{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colour-ternary);
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    color: var(--colour-white);
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    margin-top: 10px;
+
+}
+
+#TimeAPHead{
+    text-align: center;
+    margin-bottom: 10px;
+}
+

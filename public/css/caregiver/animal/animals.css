@@ -1,0 +1,72 @@
+@import "../../main.css";
+
+img {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+}
+
+
+#back {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    left: 10%;
+    top: 17.96%;
+    color: var(--colour-secondary);
+}
+
+#back a {
+    color: var(--colour-secondary);
+}
+
+#back i {
+    font-size: 60px
+}
+
+button {
+    width: 100px;
+    height: 50px;
+}
+
+#index{
+    display: none;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+h1 {
+    margin: 50px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 61px;
+
+    color: var(--colour-secondary);
+}
+
+h2 {
+    font-size: 36px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    color: var(--colour-secondary);
+}
+
+.found_animals{
+    cursor: pointer;
+    display: grid;
+    grid: 70px / auto auto auto;
+    width: 700px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colour-white);
+    margin-bottom: 10px;
+    border-radius: 30px;
+    box-shadow: 4px 4px 4px rgb(0 0 0 / 20%);
+}

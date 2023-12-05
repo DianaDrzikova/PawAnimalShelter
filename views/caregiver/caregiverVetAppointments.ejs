@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+
+        <div id="back">
+            <a href="\caregiverProfileAnimal\<%-animal_id%>"><i class="material-icons">arrow_back</i></a>
+        </div>
+
+
+        <h1 id="h1AddAnimal">Veterinary requirements</h1>
+        <hr id="hrAddAnimal">
+
+        <div class="Inside">
+
+            <div id="choose">
+                <form id="form" method="post">
+                    <div id="divDate">
+                        <h2 id="h2AddAnimal">Veterinary requirements:</h2>
+                        <input id="type" type="text" name="type" placeholder="Type of appointment" autocomplete="off">
+                        <textarea id="description" type="text" name="description" placeholder="Description" autocomplete="off"></textarea>
+                    </div>
+                    <button type="submit" name="submit">Send</button>
+                </form>
+            </div>
+
+                <div>
+                    <%- include('caregiverFoundAppointments') %>
+                </div>
+                
+
+        </div>
+
+    </div>
+
+
+    <script>
+//
+    </script>
+</body>
+
+
+</html>

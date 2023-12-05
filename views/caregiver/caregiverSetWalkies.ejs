@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <title>Document</title>
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            background-color :var(--colour-white);
+            color: var(--colour-ternary);
+            border: 2px solid var(--colour-ternary);
+        }
+    
+        .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+            background-color: var(--colour-ternary);
+            font-weight: normal;
+            color: var(--colour-white);
+            border: none;
+        }    
+    
+        .ui-widget {
+          font-family: 'Montserrat';
+          font-size: 1em;
+        }
+    
+    
+        .ui-widget.ui-widget-content {
+          border-top: none;
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+        }
+    
+        #ui-datepicker-div{
+          width: 362.5px;
+          border-bottom-left-radius: 20px;
+          border-bottom-right-radius: 20px;
+          box-shadow: 0px 16px 10px 0px rgb(0 0 0 / 20%);
+        }
+    
+      </style>
+</head>
+<body>
+
+
+    
+    <div class="content">
+    
+        <div id="back">
+            <a href="\caregiverProfileAnimal\<%-animal_id%>"><i class="material-icons">arrow_back</i></a>
+        </div>
+    
+    
+        <h1 id="h1AddAnimal">Create volunteering schedule</h1>
+        <hr id="hrAddAnimal">
+        
+        <div class="Inside">
+            
+            <div id="choose">
+                <form id="form" method="post">
+                    <div id="divDate">
+                        <h2 id="h2AddAnimal">Choose date:</h2>
+                        <input type="text" id="datepicker" autocomplete="off" placeholder="yyyy-mm-dd">
+                    </div>
+                    <div>
+                        <button type="submit" name="submit" id="submit" >Submit</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="box">
+                <div>
+                    <h2>Schedule:</h2>
+                    <%- include('caregiverFoundReservations') %>    
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div>
+        
+    <div id="dialog" title="Ooops!">
+        <p>This date is already set. (Walkies or Appointment) </p>
+        
+    </div>
+
+    <script>
+
+        
+        $("#form").submit(function(e) {
+          datepicker = $("#datepicker").val()
+          console.log(datepicker)
+          var date = "today"
+
+          if(datepicker){
+            date = new Date(datepicker)
+            console.log(date)
+            //date.setHours(0,0,0,0);
+        }
+            console.log(date)
+            
+            e.preventDefault();
+                $.ajax({
+                    url: "/caregiverSetWalkies/submit/<%-animal_id%>",
+                    //url: "/",
+                    type: "POST",
+                    data: {
+                        'date': date,
+                    },
+                    success: function () {
+                        console.log("succesfully created")
+                    },
+                    error: function () {
+                        console.log("not succesfully created")
+                        $( "#dialog" ).dialog( "open" );
+                    }                    
+                });
+
+        });
+
+
+
+
+        $( function() {
+            $( "#dialog" ).dialog({
+                autoOpen: false,
+            });
+        });
+
+
+        var today_parsing = new Date()
+        var hour = today_parsing.getHours()
+        var minutes = today_parsing.getMinutes()
+
+        if( hour > 13 && minutes > 45){
+            $( function() {
+                $( "#datepicker" ).datepicker({
+                    dateFormat:"yy-mm-dd",
+                    minDate: 1,
+                    maxDate: "+0M +7D"
+                });
+            });
+
+        }else{
+            $( function() {
+                $( "#datepicker" ).datepicker({
+                    dateFormat:"yy-mm-dd",
+                    minDate: 0,
+                    maxDate: "+0M +7D"
+                });
+            });
+        }
+
+        function loadDoc() {
+            console.log("reloading...")
+            const xhttp = new XMLHttpRequest();  
+            xhttp.onload = function() {
+                document.getElementById("res_id").innerHTML = this.responseText;
+            } 
+            
+            xhttp.open("GET", "/caregiverFoundReservations/<%-animal_id%>");    
+            xhttp.send();       
+        }
+
+
+        setInterval(loadDoc,1000)
+
+    
+    </script>
+
+
+
+</body>
+</html>

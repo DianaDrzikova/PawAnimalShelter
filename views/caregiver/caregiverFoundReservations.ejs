@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="res_class" id="res_id">   
+        <% if(data_for_print.length){ for(var i = 0; i< data_for_print.length; i++) {%>
+          <div id="res_div" class="res_div" >
+            <a id="a1"><%=data_for_print[i]%></a>
+            <a class="delete_reservation" onClick="deleteFunc('<%=data[i].reservation_id%>')"><i class="material-icons">close</i></a>
+          </div>
+
+        <% } }else{ %>
+
+          No data ever existed.
+  
+        <% } %>
+      </div>
+
+      <script>
+
+
+        function deleteFunc(id){
+            console.log(id)
+            $.ajax({
+                type: 'DELETE',
+                url: '/caregiverSetWalkies/'+id,
+                success: function(){
+
+                }
+            });
+        }
+
+      </script>
+
+
+
+</body>
+</html>

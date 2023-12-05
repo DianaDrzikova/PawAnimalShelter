@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+      background-color :var(--colour-white);
+      color: var(--colour-ternary);
+      border: 2px solid var(--colour-ternary);
+  }
+
+  .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+      background-color: var(--colour-ternary);
+      font-weight: normal;
+      color: var(--colour-white);
+      border: none;
+  }    
+
+  .ui-widget {
+    font-family: 'Montserrat';
+    font-size: 1em;
+  }
+
+
+  .ui-widget.ui-widget-content {
+    border-top: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+
+  #ui-datepicker-div{
+    width: 362.5px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0px 16px 10px 0px rgb(0 0 0 / 20%);
+  }
+
+</style>
+<body>
+  <h1>Browse animal profiles</h1>
+    <div class="Search">
+
+      <div class="drop_date">
+        <img src="../images/paw.png" alt="paw">
+        <form class="form_name">
+          <input type="text" name="type" id="animal_name" placeholder="Name" autocomplete="off">
+        </form>
+      </div>
+
+
+      <div class="drop_spieces">
+        <button onclick="myFunction()" id="button_id" class="drop_spieces_btn"><img src="../images/cat.png" alt="cat">Spieces</button>
+        <div id="my_drop_spieces" class="drop_spieces_content">
+          <a class="all" onClick="is_ClickedSearchbar('all')">All</a>
+          <a class="cat" onClick="is_ClickedSearchbar('cat')">Cat</a>
+          <a class="dog" onClick="is_ClickedSearchbar('dog')">Dog</a>
+          <a class="rabbit" onClick="is_ClickedSearchbar('rabbit')">Rabbit</a>
+        </div>
+      </div>
+
+      <div id="search_class"><button class="search_btn" onclick="reload()">Search</button></div>
+    </div>
+    
+    <script>
+
+        function myFunction() {
+          document.getElementById("my_drop_spieces").classList.toggle("show");
+
+        }
+        window.onclick = function(event) {
+          if (!event.target.matches('.drop_spieces_btn')) {
+            var dropdowns = document.getElementsByClassName("drop_spieces_content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        } 
+
+
+        var spieces = "all";
+        
+        
+        function is_ClickedSearchbar(param){
+          spieces = param
+          console.log("inside", spieces);
+          const Spieces = spieces.charAt(0).toUpperCase() + spieces.slice(1);
+          document.getElementById("button_id").innerHTML = '<img src="../images/cat.png" alt="cat">' + Spieces;
+          
+        }
+
+        function reload(){
+            var name = "all"
+            if(document.getElementById("animal_name").value != ""){
+                name = document.getElementById("animal_name").value
+            }
+            console.log(spieces, name)
+
+            var endpoint = ""
+
+            if('<%-role%>' == "caregiver"){
+                endpoint = "/caregiverAnimals/?name="+name+"&spieces="+spieces
+            }
+            else if('<%-role%>' == "veterinarian"){
+                endpoint = "/veterinarianAnimals/?name="+name+"&spieces="+spieces
+            }
+
+
+            fetch(endpoint , {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                
+            })
+            .then( window.location.href = endpoint) 
+
+        }
+
+
+        </script>
+
+</body>
+</html>

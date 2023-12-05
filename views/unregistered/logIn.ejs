@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+</head>
+<body>
+    <div class="content">
+        <div class="signup">
+            <form class="signup" method="post">
+                <h1>Log In</h1>
+                <h2>E-Mail:</h2>
+                <input type="text" name="email"  placeholder="E-Mail">
+                <h2>Password:</h2>
+                <input type="password" name="password"  placeholder="Password" autocomplete="off" id="myInput">
+                <div class="check">
+                    <input type="checkbox" onclick="showPsw()" id="checkbox">
+                    <h3>Show Password</h3>
+                </div>
+                <button type="submit" name="submit">
+                    Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showPsw() {
+        var x = document.getElementById("myInput");
+        if (x.type == "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+        }
+    </script>
+
+    <script type="text/javascript">
+    function validateForm() {
+      var a = document.getElementById("email").value;
+      var b = document.getElementById("password").value;
+      if (a == null || a == "", b == null || b == "") {
+        alert("Please Fill All Required Field");
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

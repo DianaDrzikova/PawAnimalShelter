@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+
+      <div class="content">
+
+        <%- include('partials/mainSearchbar') %>
+    
+        <h2>Pending for confirmation</h2>
+      </div>
+    
+        <div class="White">
+    
+          <div id="tabs-1">          
+            <%- include('veterinarianFoundAppointments') %>
+          </div>
+        </div>
+    
+      </div>
+
+    <script>
+
+    history.pushState("<%-data%>", "Paw Animal Shelter", "logIn");
+    history.replaceState("<%-data%>", "Paw Animal Shelter", "veterinarianHomepage")
+
+        function getMyAppointments(){
+            console.log("reloading confirmed reservations..!")
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                document.getElementById("dataappointments").innerHTML = this.responseText;
+            }
+            xhttp.open("GET", "/veterinarianFoundAppointments");    
+            xhttp.send();
+
+        }
+
+        window.onload=()=>{
+            getMyAppointments()
+        }
+
+    setInterval(getMyAppointments,2000)
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="found" id="found_id">   
+        <h2>All profiles</h2>
+        <% if(data.length){ for(var i = 0; i< data.length; i++) {%>
+          <div id="found_div" class="found_animals" onClick="window.location.href = '/adminProfileUser/<%= data[i].id%>'">
+            <a id="index"><%=data[i].first_name%></a>
+            <a id="index"><%=data[i].last_name%></a>
+            <a id="index"><%=data[i].e_mail%></a>
+            <a ><i class="material-icons">more_horiz</i></a>
+          </div>
+
+        <% } }else{ %>
+
+          No data ever existed.
+  
+        <% } %>
+      </div>
+
+      <script>
+
+        history.pushState("<%-data%>", "Paw Animal Shelter", "");
+        history.replaceState("<%-data%>", "Paw Animal Shelter", "adminHomepage")
+
+        </script>
+
+</body>
+</html>  

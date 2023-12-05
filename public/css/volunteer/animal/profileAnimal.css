@@ -1,0 +1,335 @@
+@import "../../main.css";
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background-color: white;
+} 
+
+img {
+    height: 30%;
+    width: 30%;
+    border-radius: 30px;
+}
+
+
+button {
+    width: 100px;
+    height: 50px;
+}
+
+#animal_id{
+    display: none;
+}
+
+
+#back {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    left: 10%;
+    top: 17.96%;
+}
+
+#back a {
+    color: var(--colour-secondary);
+    margin-top: 35px;
+}
+
+#back i {
+    font-size: 60px;
+    margin-top: 35px;
+}
+
+#photo {
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    border:3px solid var(--colour-ternary);
+}
+
+#name {
+    position: absolute;
+    left: 23.28%;
+    right: 20.47%;
+    top: 17.96%;
+    bottom: 75.09%;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 61px;
+
+    color: var(--colour-secondary);
+    margin-top: 35px;
+}
+
+hr {
+    position: absolute;
+    top: 25%;
+    bottom: 75%;
+    left: 18%;
+    right: 18%;
+
+    border: 1px solid var(--colour-secondary);
+    margin-top: 35px;
+}
+
+
+h2 {
+    font-size: 24px;
+
+    color: var(--colour-secondary);
+}
+
+
+.InsideAddAnimal{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    width: 1300px;
+    justify-content: center;
+    padding-top: 350px;
+    background-color: var(--colour-primary);
+}
+
+.Green {
+    width: 100%;
+    background-color: var(--colour-primary);
+    margin: 0;
+    padding: 0;
+    border: none;
+    align-items: center;
+}
+
+.InsideAddAnimal #outerdiv{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+.InsideAddAnimal #divPhoto{
+    display: grid;
+}
+
+.InsideAddAnimal #divOther{
+    display: grid;
+    width: 500px
+}
+
+.InsideAddAnimal #divOther div {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+#description {
+    padding-top: 30px;
+}
+
+.delete {
+    position: absolute;
+    top: 21%;
+    color: red;
+    left: 62%;
+
+}
+
+.delete, .edit{
+    width: 200px;
+    height: 25px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+
+.edit {
+    top: 20%;
+    left: 70%;
+    margin-top: 35px;
+}
+
+.edit a {
+    color: var(--colour-ternary);
+    font-weight: 600;
+    font-size:28px;
+}
+
+.edit i{
+    font-size: 28px;
+    padding-left: 5px;
+}
+
+
+.dropbtn1,.dropbtn2 {
+    background-color: var(--colour-darkgreen);
+    color: white;
+    font-size: 16px;
+    min-width: 250px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn1:hover, .dropbtn1:focus,  .dropbtn2:hover, .dropbtn2:focus {
+background-color: var(--colour-ternary);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown1, .dropdown2 {
+position: relative;
+display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content1,   .dropdown-content2 {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 250px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content1 a,   .dropdown-content2 a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content1 a:hover,  .dropdown-content2 a:hover  {background-color: #ddd;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+#tabs-1 {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+
+}
+
+.waves {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0px;
+    background-color: var(--colour-primary);
+}
+
+
+#tabs-1 h2{
+    padding-bottom: 20px;
+}
+
+#tabs-2 h3{
+    padding-bottom: 20px;
+    font-size: 24px;
+    color: var(--colour-secondary);
+    padding-top: 100px;
+}
+
+.White {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+    padding-bottom: 90px;
+}
+
+
+.InsideAddAnimalRow{
+    display: flex;
+    flex-direction: row;
+    width: 1300px;
+    justify-content: center;
+    gap: 200px;
+}
+
+.WhiteSaveButton {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+    align-items: center;
+    padding-bottom: 30px;
+    
+}
+
+.WhiteSaveButton button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+
+    background: var(--colour-white);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    font-weight: bold;
+
+    width: 100px;
+    height: 40px;
+}
+
+#editfont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#datareservations{
+    display: none;
+}
+
+
+#tabs-2 h4{
+    font-size: 20px;
+    color: var(--colour-secondary);
+    padding: 5px 0;
+}
+
+#tabs-2 a{
+    font-size: 19px;
+    opacity: 60%;
+}
+
+#datepicker {
+    margin-top: 20px;
+    color: var(--colour-secondary);
+    background-color: var(--colour-white);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    height: 30px;
+    width: 150px;
+    border: 2px solid var(--colour-ternary);
+    border-radius: 5px;
+    padding-left: 10px;
+}

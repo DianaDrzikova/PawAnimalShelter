@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="back">
+        <a href="/caregiverHomepage"><i class="material-icons">arrow_back</i></a>
+    </div>
+
+    <h1 id="name">Volunteer</h1>
+    <hr>
+
+    <div class="InsideAddAnimal">
+
+        <div id="outerdiv">
+
+            <div id="divPhoto">
+                <h2 id="pic">Photo:</h2>
+                <img id="photo" src="<%= data[0].img_par%>">
+            </div>
+
+            <div id="divOther">
+                <div>
+                    <h2 id="firstname">First Name:</h2>
+                </div>
+
+                <div>
+                    <h2 id="lastname">Last Name:</h2>
+                </div>
+
+                <div>
+                    <h2 id="birthdate">Date Of Birth:</h2>
+                </div>
+
+                <div>
+                    <h2 id="phone">Phone Number:</h2>
+                </div>
+
+                <div>
+                    <h2 id="email">E-mail:</h2>
+                </div>
+
+                <div>
+                    <h2 id="address">Address:</h2>
+                </div>
+
+            </div>
+
+            <div id="divOther">
+                <div>
+                    <h2 id="firstname"><%-data[0].first_name%></h2>
+                </div>
+
+                <div>
+                    <h2 id="lastname"><%-data[0].last_name%></h2>
+                </div>
+
+                <div>
+                    <h2 id="birthdate">01.09.1992</h2>
+                </div>
+
+                <div>
+                    <h2 id="phone"><%-data[0].phone_number%></h2>
+                </div>
+
+                <div>
+                    <h2 id="email"><%-data[0].e_mail%></h2>
+                </div>
+
+                <div>
+                    <h2 id="address"><%-data[0].address%></h2>
+                </div>
+
+            </div>
+            
+        </div>
+
+
+        <div id="pendingButtons">
+            <div id="confirmV" onClick="decideVolunteer('<%-data[0].id%>', true)">
+                <a>Confirm</a>
+            </div>
+        
+            <div id="declineV" onClick="decideVolunteer('<%-data[0].id%>', false)">
+                <a>Decline</a>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+
+
+        function decideVolunteer(id, bool_value){
+            const endpoint = '/caregiverPendingUserProfile/'+id;
+            fetch(endpoint , {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({'confirm':bool_value}),
+            })
+            .then((response => response.json()))
+            .then((data) => window.location.href = data.redirect) 
+            .catch(err => console.log(err))
+
+        }
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>  
+     $( function() {
+        $( "#tabs" ).tabs({
+        beforeLoad: function( event, ui ) {
+        ui.jqXHR.fail(function() {
+          ui.panel.html(
+            "Couldn't load this tab. We'll try to fix this as soon as possible. " +
+            "If this wouldn't be a demo." );
+        });
+      }
+    });
+  } ); 
+
+
+    window.onload = () => {
+      console.log("reloading reservations...")
+      const xhttp = new XMLHttpRequest();  
+      xhttp.onload = function() {
+          document.getElementById("datareservations").innerHTML = this.responseText;
+      } 
+      
+      xhttp.open("GET", "/caregiverPendingReservations");    
+      xhttp.send();   
+
+    }
+
+
+   </script> 
+
+   
+
+    <style>
+      .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+          border: 2px solid var(--colour-ternary);
+          background: var(--colour-primary);
+          font-weight: normal;
+          color: #fff;
+          border-radius: 15px 15px 0px 0px;
+          width: 300px;
+      }
+      #tabs .ui-state-active,#tabs .ui-widget-content .ui-state-active,#tabs .ui-widget-header .ui-state-active,#tabs a.ui-button:active,#tabs .ui-button:active,#tabs .ui-button.ui-state-active:hover {
+          border: 1px solid var(--colour-white);
+          background: var(--colour-white);
+          font-weight: normal;
+          color: black;
+      }
+
+      .ui-widget-header {
+        background: transparent;
+        color: #333333;
+        font-weight: bold;
+        border: none;
+      }
+
+      .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+          color:var(--colour-secondary);
+          text-decoration: none;
+      }
+
+      .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+          float: left;
+          padding: 0.7em 29%;
+          text-decoration: none;
+      }
+
+      .ui-tabs .ui-tabs-panel {
+        display: block;
+        border-width: 0;
+        padding: 0;
+        background: none;
+        }
+
+        .ui-tabs .ui-tabs-nav {
+          display: flex;
+          gap: 40px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+  <div class="content">
+    
+    <%- include('partials/mainSearchbar') %>
+
+    <h2>Pending for confirmation</h2>
+  </div>
+
+  <div id="tabs">
+    <ul>
+      <li><a href="#tabs-1" id="reservation_list">Reservations</a></li>
+      <li><a href="#tabs-2" id="volunteer_list">Volunteers</a></li>
+    </ul>
+
+    <div class="White">
+
+      <div id="tabs-1">
+        
+        <%- include('caregiverPendingReservations') %>
+      </div>
+      <div id="tabs-2">
+        <%- include('caregiverPendingVolunteers') %>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <script>
+
+    history.pushState("<%-data%>", "Paw Animal Shelter", "logIn");
+    history.replaceState("<%-data%>", "Paw Animal Shelter", "caregiverHomepage")
+
+    const search_button_r = document.getElementById("reservation_list");
+    const search_button_v = document.getElementById("volunteer_list");
+
+    //var isClicked = true;
+    
+    function determineClicked(){
+      if(isClicked){
+        loadReservations()
+      }else{
+        loadVolunteers()
+      }
+    }
+    
+    setInterval(determineClicked,1000)
+    
+    search_button_v.addEventListener("click", function(){
+      isClicked  = false
+    
+    });
+
+
+    search_button_r.addEventListener("click", function(){
+        isClicked  = true
+
+      });
+
+
+    function loadReservations() {
+        console.log("reloading reservations...")
+        const xhttp = new XMLHttpRequest();  
+        xhttp.onload = function() {
+            document.getElementById("datareservations").innerHTML = this.responseText;
+        } 
+        
+        xhttp.open("GET", "/caregiverPendingReservations");    
+        xhttp.send();       
+    }
+
+    function loadVolunteers() {
+        console.log("reloading volunteers...")
+        const xhttp = new XMLHttpRequest();  
+        xhttp.onload = function() {
+            document.getElementById("datavolunteer").innerHTML = this.responseText;
+        } 
+        
+        xhttp.open("GET", "/caregiverPendingVolunteers");    
+        xhttp.send();       
+    }
+
+
+    
+
+  </script>
+
+
+
+    
+</body>
+</html>

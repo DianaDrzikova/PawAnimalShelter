@@ -1,0 +1,139 @@
+@import "../../main.css";
+
+#back {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    left: 10%;
+    top: 17.96%;
+}
+
+#back a {
+    color: var(--colour-secondary);
+}
+
+#back i {
+    font-size: 60px
+}
+
+#name {
+    position: absolute;
+    left: 23.28%;
+    right: 20.47%;
+    top: 17.96%;
+    bottom: 75.09%;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 61px;
+
+    color: var(--colour-secondary);
+}
+
+hr {
+    position: absolute;
+    top: 25%;
+    bottom: 75%;
+    left: 18%;
+    right: 18%;
+
+    border: 1px solid var(--colour-secondary);
+}
+
+h2 {
+    font-size: 24px;
+    color: var(--colour-secondary);
+}
+
+.InsideAddAnimal{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    gap: 40px;
+    width: 1300px;
+    height: 1080px;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.InsideAddAnimal #outerdiv{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.InsideAddAnimal #divPhoto{
+    display: grid;
+    margin-right: 90px;
+}
+
+.InsideAddAnimal #divOther{
+    display: grid;
+    width: 220px
+}
+
+.InsideAddAnimal #divOther:nth-child(2) h2, #pic{
+    opacity: 80%;
+}
+
+.InsideAddAnimal #divOther h2{
+    padding: 5px;
+}
+
+.InsideAddAnimal #divOther div {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#description {
+    padding-top: 30px;
+}
+
+#photo {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    border:1px solid var(--colour-secondary);
+}
+
+#confirmV, #declineV {
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
+}
+
+#confirmV {
+    background-color: var(--colour-ternary);
+}
+
+#declineV {
+    background-color: red;
+}
+
+#pendingButtons{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    position: absolute;
+    width: 200px;
+    height: 25px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    line-height: 29px;
+    top: 20%;
+    left: 66%;
+    cursor: pointer;
+
+    font-weight: bold;
+    font-size: large;
+    color: var(--colour-white);
+}

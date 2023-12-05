@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="back">
+        <a href="/caregiverHomepage"><i class="material-icons">arrow_back</i></a>
+    </div>
+
+    <h1 id="date"><%-data_to_print[0]%></h1>
+    <hr>
+
+    <div class="Insides">
+
+        <div id="rescard">
+            <div id="animalres">
+                <h2>Animal</h2>
+
+                <div >
+                    <img id="photo" src="<%-data[0].img%>">
+                </div>
+                
+                <div >
+                    <a id="name"><%-data[0].name%></as>
+                </div>
+
+                <div>
+                    <a id="age"><%-data[0].age%></a>
+                </div>
+    
+                <div>
+                    <a id="spieces"><%-data[0].spieces%></a>
+                </div>
+
+                <div>
+                    <a id="userprofile" data-doc="">Go to profile<i class="material-icons">chevron_right</i></a>
+                </div>
+    
+            </div>
+
+            <div class="line"></div>
+    
+            <div id="userres">
+                <h2>Volunteer</h2>
+    
+                <div >
+                    <img id="photo" src="<%-data[0].img_par%>">
+                </div>
+                
+                <div >
+                    <a id="name"><%-data[0].first_name%><%-data[0].last_name%></a>
+                </div>
+    
+                <div>
+                    <a id="age"><%-data[0].phone_number%></a>
+                </div>
+    
+                <div>
+                    <a id="spieces"><%-data[0].e_mail%></a>
+                </div>
+
+                <div>
+                    <a id="userprofile" data-doc="">Go to profile<i class="material-icons">chevron_right</i></a>
+                </div>
+    
+            </div>
+    
+        </div>
+
+    
+        <div id="pendingButtons">
+            <div id="confirmR" onClick="decideReservation('<%-data[0].reservation_id%>', true)">
+                <a>Confirm </a>
+            </div>
+            
+            <div id="declineR" onClick="decideReservation('<%-data[0].reservation_id%>', false)">
+                <a>Decline</a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script>
+
+        function decideReservation(id, bool_value){
+            const endpoint = '/caregiverPendingReservationProfile/'+id;
+            fetch(endpoint , {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({'confirm':bool_value}),
+            })
+            .then((response => response.json()))
+            .then((data) => window.location.href = data.redirect) 
+            .catch(err => console.log(err))
+        }
+
+        const animal_profile = document.querySelector('a#userprofile')
+
+        animal_profile.addEventListener('click', (e) => {
+        const endpoint = "/caregiverProfileAnimal/<%=data[0].animal_id%>";
+
+            fetch(endpoint , {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+
+
+            })
+            .then( window.location.href = endpoint ) 
+        })
+
+
+    </script>
+
+    
+</body>
+</html>

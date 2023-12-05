@@ -1,0 +1,289 @@
+@import "../../main.css";
+
+img {
+    height: 30%;
+    width: 30%;
+    border-radius: 30px;
+}
+
+
+button {
+    width: 100px;
+    height: 50px;
+}
+
+#animal_id{
+    display: none;
+}
+
+
+#back {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    left: 10%;
+    top: 17.96%;
+}
+
+#back a {
+    color: var(--colour-secondary);
+}
+
+#back i {
+    font-size: 60px
+}
+
+#photo {
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    border:3px solid var(--colour-ternary);
+}
+
+#name {
+    position: absolute;
+    left: 23.28%;
+    right: 20.47%;
+    top: 17.96%;
+    bottom: 75.09%;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 61px;
+
+    color: var(--colour-secondary);
+}
+
+hr {
+    position: absolute;
+    top: 25%;
+    bottom: 75%;
+    left: 18%;
+    right: 18%;
+
+    border: 1px solid var(--colour-secondary);
+}
+
+
+h2 {
+    font-size: 24px;
+
+    color: var(--colour-secondary);
+}
+
+
+.InsideAddAnimal{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    gap: 40px;
+    width: 1300px;
+    height: 1080px;
+    justify-content: center;
+    padding-top: 200px;
+}
+
+.InsideAddAnimal #outerdiv{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+.InsideAddAnimal #divPhoto{
+    display: grid;
+}
+
+.InsideAddAnimal #divOther{
+    display: grid;
+    width: 500px
+}
+
+.InsideAddAnimal #divOther div {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+#description {
+    padding-top: 30px;
+}
+
+.delete, .edit{
+    position: absolute;
+    width: 200px;
+    height: 25px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.delete {
+    top: 21%;
+    color: red;
+    left: 62%;
+}
+
+.edit {
+    top: 20%;
+    left: 70%;
+}
+
+.edit a {
+    color: var(--colour-ternary);
+}
+
+
+.dropbtn1,.dropbtn2 {
+    background-color: var(--colour-darkgreen);
+    color: white;
+    font-size: 16px;
+    min-width: 250px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn1:hover, .dropbtn1:focus,  .dropbtn2:hover, .dropbtn2:focus {
+background-color: var(--colour-ternary);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown1, .dropdown2 {
+position: relative;
+display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content1,   .dropdown-content2 {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 250px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content1 a,   .dropdown-content2 a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content1 a:hover,  .dropdown-content2 a:hover  {background-color: #ddd;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.ProfileBtns {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+}
+
+.ProfileBtns div {
+    background-color: var(--colour-ternary);
+    border-radius: 20px;
+    width: 180px;
+    height: 150px;
+    top: 20%;
+    left: 70%;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ProfileBtns img {
+    height: 96px;
+    width: 96px;
+    border-radius: 30px;
+    opacity: 70%;
+}
+
+.ProfileBtns div:hover {
+    background-color: var(--colour-white);
+    cursor: pointer;
+}
+
+
+
+#upcoming_id, #history_id{
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: grid;
+    grid: 50px / auto auto auto;
+    width: 700px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow: 4px 4px 4px rgb(0 0 0 / 20%);
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#upcoming_id{
+    background-color: var(--colour-white);
+}
+
+#history_id{
+    background-color: var(--colour-lightgray);
+}
+
+#previous_app, #upcoming_app{
+    padding-bottom: 20px;
+}
+
+
+#history_data_app, #upcoming_data_app{
+    padding-bottom: 70px;
+}
+
+
+.InsideAddAnimal1{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    gap: 40px;
+    width: 1300px;
+    min-height: 1080px;
+    justify-content: center;
+    padding-top: 300px;
+}
+
+
+.InsideAddAnimal1 #outerdiv{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+.InsideAddAnimal1 #divPhoto{
+    display: grid;
+}
+
+.InsideAddAnimal1 #divOther{
+    display: grid;
+    width: 500px
+}
+
+.InsideAddAnimal1 #divOther div {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}

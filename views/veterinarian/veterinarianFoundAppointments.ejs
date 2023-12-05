@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="dataappointments">
+        <% if(data.length){ for(var i = 0; i < data.length; i++) {%>
+        <div id="reservationpending" onClick="is_Clicked('<%-data[i].appointment_id%>')">
+            <a><%-data[i].type%></a>
+            <a><%-data[i].name%></a>
+            <a id="upcoming_id_icon"><i class="material-icons">chevron_right</i></a>
+        </div>
+        <% }} %>
+    </div>
+
+    <script>
+        function is_Clicked(id){
+            console.log(id)
+            url = "/veterinarianAppointmentCard/"+id
+            window.location.href = url
+          }
+    </script>  
+</body>
+</html>

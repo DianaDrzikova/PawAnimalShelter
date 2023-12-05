@@ -1,0 +1,251 @@
+@import "../../main.css";
+img {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+}
+
+table{
+    border-collapse: collapse;
+    margin: 50px 0;
+    min-width: 550px;
+    max-width: 550px;
+    border: 1px solid;
+
+}
+
+tr{
+    background-color:var(--colour-white);
+    margin: 10px;
+    border: 1px solid;
+    border-color: var(--colour-ternary);
+}
+
+td {
+    text-align: center;
+    height: 80px;
+}
+
+
+#index{
+    display: none;
+}
+
+
+
+#back {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    left: 10%;
+    top: 17.96%;
+    color: var(--colour-secondary);
+}
+
+#back a {
+    color: var(--colour-secondary);
+}
+
+#back i {
+    font-size: 60px
+}
+
+#h1AddAnimal {
+    position: absolute;
+    left: 23.28%;
+    right: 20.47%;
+    top: 17.96%;
+    bottom: 75.09%;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 61px;
+
+    color: var(--colour-secondary);
+}
+
+hr {
+    position: absolute;
+    top: 25%;
+    bottom: 75%;
+    left: 18%;
+    right: 18%;
+
+    border: 1px solid var(--colour-secondary);
+}
+
+#h2AddAnimal {
+    font-size: 24px;
+
+    color: var(--colour-secondary);
+}
+
+
+.InsideAddAnimal form #outerdiv{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    position: absolute;
+    left: 18.75%;
+    right: 18.75%;
+    top: 40%;
+    gap: 100px;
+}
+
+.InsideAddAnimal #divPhoto{
+    display: grid;
+}
+
+.InsideAddAnimal #divOther{
+    display: grid;
+    width: 500px
+}
+
+.InsideAddAnimal #divOther div {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.InsideAddAnimal button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 35px;
+    gap: 20px;
+    cursor: pointer;
+
+    position: absolute;
+    left: 46.3%;
+    right: 46.25%;
+    top: 80.93%;
+    bottom: 14.44%;
+
+    background: var(--colour-white);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+#Name, #Species, #Age, #Gender, #Description, #Photo {
+    border-radius: 4px;
+    border:1px solid var(--colour-secondary);
+    background: var(--colour-lightgray);
+}
+
+#Name, #Species, #Age, #Gender {
+    padding-left: 10px;
+    width: 300px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#Photo {
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+}
+
+#Description {
+    width: 300px;
+    height: 200px;
+    text-align: justify;
+    padding-bottom: 170px;
+    padding: 10px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+textarea {
+    writing-mode: horizontal-tb !important;
+    font-family: monospace;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    cursor: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    column-count: initial !important;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.delete{
+    position: absolute;
+    width: 200px;
+    height: 25px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    cursor: pointer;
+}
+
+.delete {
+    top: 20%;
+    color: red;
+    left: 62%;
+}
+
+.right_side a{
+    float: right;
+    color: var(--colour-secondary);
+    font-style: normal;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    padding-top: 10px;
+
+}
+
+.custom-file-input {
+    color: transparent;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input::before {
+    content: 'Select photo';
+    color: var(--colour-secondary);
+    font-family: 'Montserrat';
+    font-size: 24px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+
+    padding-top: 45%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.custom-file-input:active {
+    outline: 0;
+}
+.custom-file-input:active::before {
+    background: transparent; 
+}
+
+.custom-file-input::after {
+    content: 'Selected photo';
+}

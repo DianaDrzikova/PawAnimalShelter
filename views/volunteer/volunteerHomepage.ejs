@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="Green">
+
+        <div class="content">
+            
+            <%- include('partials/volunteerSearchbarHomepage') %>
+            
+        </div>
+    </div>
+    <img class="waves" src="../images/waves.png">
+    
+    <div class="White">
+        <div id="tabs-1">
+            <h2>My upcoming reservations:</h2>
+            <%- include('volunteerFoundReservations') %>
+        </div>
+    </div>
+
+    <script>
+
+    history.pushState("<%-data%>", "Paw Animal Shelter", "signUp");
+    history.replaceState("<%-data%>", "Paw Animal Shelter", "volunteerHomepage")
+
+    function getMyConfirmedReservations(){
+        console.log("reloading confirmed reservations..!")
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("datareservations").innerHTML = this.responseText;
+        }
+        xhttp.open("GET", "/volunteerFoundReservations/<%-user_id%>");    
+        xhttp.send();
+
+    }
+
+    window.onload=()=>{
+        getMyConfirmedReservations()
+    }
+
+    setInterval(getMyConfirmedReservations,2000)
+
+
+
+    </script>
+
+</body>
+</html>

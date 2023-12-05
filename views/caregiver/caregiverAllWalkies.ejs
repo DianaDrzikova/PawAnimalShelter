@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+  <div class="content">
+
+    <div id="back">
+      <a href="\caregiverProfileAnimal\<%-animal_id%>"><i class="material-icons">arrow_back</i></a>
+    </div>
+    
+    <h1 id="h1AddAnimal">All <%=animal_data[0].name%>'s reservations</h1>
+    <hr id="hrAddAnimal">
+
+    <div id="box"> 
+
+      <h2>Upcoming</h2>
+      <div id="dates_upcoming_con" onClick="is_Clicked()">
+          <% if(p_upcoming_data.length){ for(var i = 0; i< p_upcoming_data.length; i++) {%>
+
+            <div id="upcoming_id" class="upcoming_id" onClick="is_Clicked1('<%-upcoming_data[i].reservation_id%>')">
+              <a id="a2"><%=p_upcoming_data[i]%></a>
+              <a id="upcoming_id_icon"><i class="material-icons">chevron_right</i></a>
+            </div>
+  
+          <% } }else{ %>
+  
+            No data ever existed.
+  
+          <% } %>
+      </div> 
+
+
+      <h2>Previous</h2>
+      <div id="dates_history" >
+          <% if(p_history_data.length){ for(var i = 0; i< p_history_data.length; i++) {%>
+
+            <div id="history_id" class="history_id" onClick="is_Clicked1('<%-history_data[i].reservation_id%>')">
+              <a id="a3"><%=p_history_data[i]%></a>
+              <a id="history_id_icon"><i class="material-icons">chevron_right</i></a>
+            </div>
+  
+          <% } }else{ %>
+  
+            No data ever existed.
+  
+          <% } %>
+      </div>
+
+      <script>
+          function is_Clicked1(id){
+            console.log("reservation:", id)
+            url = "/caregiverReservationCard/"+id
+            window.location.href = url
+          }
+
+      </script>
+
+      
+    </div>
+
+
+
+
+  </div>
+
+
+</body>
+</html>

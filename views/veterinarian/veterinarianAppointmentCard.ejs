@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <title>Document</title>
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            background-color :var(--colour-white);
+            color: var(--colour-ternary);
+            border: 2px solid var(--colour-ternary);
+        }
+    
+        .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+            background-color: var(--colour-ternary);
+            font-weight: normal;
+            color: var(--colour-white);
+            border: none;
+        }    
+    
+        .ui-widget {
+          font-family: 'Montserrat';
+          font-size: 1em;
+        }
+    
+    
+        .ui-widget.ui-widget-content {
+          border-top: none;
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+        }
+    
+        #ui-datepicker-div{
+          width: 362.5px;
+          border-bottom-left-radius: 20px;
+          border-bottom-right-radius: 20px;
+          box-shadow: 0px 16px 10px 0px rgb(0 0 0 / 20%);
+        }
+    
+      </style>
+</head>
+<body>
+
+    <div id="back">
+        <a id="back_link"><i class="material-icons">arrow_back</i></a>
+    </div>
+
+    <h1 id="date"><%-data[0].type%></h1>
+    <hr>
+
+
+    <div class="Insides">
+
+        <div id="rescard">
+            <div id="animalres">
+                <h2>Animal</h2>
+    
+                
+                <div >
+                    <img id="photo" src="<%-data[0].img%>">
+                </div>
+                
+                <div >
+                    <a id="name"><%-data[0].name%></as>
+                </div>
+
+                <div>
+                    <a id="age"><%-data[0].age%></a>
+                </div>
+    
+                <div>
+                    <a id="spieces"><%-data[0].spieces%></a>
+                </div>
+
+                <div>
+                    <a id="userprofile">Go to profile<i class="material-icons">chevron_right</i></a>
+                </div>
+
+            </div>
+
+            <div class="line"></div> 
+
+            <div id="userres">
+                <div>
+                    <h2 id="TimeAPHead">Plan an examination</h2>
+                </div>
+                <div>
+                    <h2 id="TimeAP">Time:</h2>
+                    <input id="Time" type="text" name="date" value="<%-data[0].time%>" placeholder="hh-mm" autocomplete="off">
+                </div>
+
+                <div>
+                    <h2 id="TimeAP">Date:</h2>
+                    <input type="text" id="datepicker" autocomplete="off" placeholder="yyyy-mm-dd">
+                </div>
+
+                <div>
+                    <h2 id="TimeAP">Note:</h2>
+                    <input id="Note" type="text" name="appoint_descrip" value="<%-data[0].vet_comment%>" autocomplete="off">
+                </div>
+
+                <div  onClick="decideAppointments('<%-data[0].appointment_id%>')">
+                    <a id="appointmentform">Confirm </a>
+                </div>
+                    
+            </div>
+    
+        </div>
+
+    </div>
+
+    <div id="dialog" title="Ooops!">
+        <p>You didn't pick the date or time!</p>
+        
+    </div>
+
+    <script>
+
+    $( function() {
+        $( "#dialog" ).dialog({
+            autoOpen: false,
+        });
+    });
+
+    function decideAppointments(id){
+        
+        var date = $("#datepicker").val()
+        date = new Date(date)
+        date.setHours(0,0,0,0);
+
+        var time = document.getElementById("Time").value
+        var note = document.getElementById("Note").value
+
+        console.log(time, date)
+
+        const endpoint = '/veterinarianAppointmentCard/'+id;
+        fetch(endpoint , {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'date':date,
+                'time': time,
+              'descrip': note,
+              'animal_id': '<%-data[0].animal_id%>',
+            })
+        })
+            .then((response => response.json()))
+            .then((data) => {
+                console.log("data redirect:",data.redirect)
+                if(data.redirect == ''){
+                    $( "#dialog" ).dialog( "open" )
+                }else{
+                    console.log("oki doki")
+                    window.location.href = data.redirect
+                }
+            }) 
+            .catch()
+        }
+//
+
+
+    var element = document.getElementById('back_link');
+    element.setAttribute('href', document.referrer);
+    element.onclick = function() {
+        history.back();
+        return false;
+    }
+
+    var element1 = document.getElementById('userprofile');
+    element1.onclick = function() {
+        window.location.href = "/veterinarianProfileAnimal/<%=data[0].animal_id%>"
+        return false;
+    }
+
+    $( function() {
+        $( "#datepicker" ).datepicker({
+            dateFormat:"yy-mm-dd",
+            minDate: 0,
+            maxDate: "+0M +7D"
+        });
+    });
+    
+
+        
+
+
+
+    </script>
+</body>
+</html>

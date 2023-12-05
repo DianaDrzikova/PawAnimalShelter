@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="back">
+        <a href="\adminHomepage"><i class="material-icons">arrow_back</i></a>
+    </div>
+    
+    <h1 id="name">Add user</h1>
+    <hr>
+    
+    <div class="InsideAddAnimal">
+        
+    <form action="/adminAddUser/submit" method="post" enctype="multipart/form-data">
+
+        
+        <div id="outerdiv">
+                
+
+            <div id="divOther">
+                <div>
+                    <h2 id="firstname">First Name:</h2>
+                </div>
+
+                <div>
+                    <h2 id="lastname">Last Name:</h2>
+                </div>
+
+                
+                <div>
+                    <h2 id="email">E-mail:</h2>
+                </div>
+
+                <div>
+                    <h2 id="phone">Password:</h2>
+                </div>
+                
+                
+                <div>
+                    <h2 id="address">Role:</h2>
+                </div>
+                
+            </div>
+            
+            <div id="divOther">
+
+                <div>
+                    <input id="Firstname" type="text" name="first_name" value="" placeholder="First Name" autocomplete="off">
+                </div>
+
+                <div>
+                    <input id="Lastname" type="text" name="last_name" value="" placeholder="Last Name" autocomplete="off">
+                </div>
+
+                <div>
+                    <input id="Birthdate" type="text" name="e_mail" value="" placeholder="E-mail" autocomplete="off">
+                </div>
+
+                <div>
+                    <input id="Phone" type="text" name="password" value="" placeholder="Password" autocomplete="off">
+                </div>
+
+                <div>
+                    <input id="Email" type="text" name="role" value="" placeholder="Role" autocomplete="off">
+                </div>
+
+                
+            </div>
+
+            <div>
+                <button type="submit" name="submit">SAVE</button>
+            </div>
+            
+        </div>
+
+        </form>
+    </div>
+
+        
+</body>
+</html>

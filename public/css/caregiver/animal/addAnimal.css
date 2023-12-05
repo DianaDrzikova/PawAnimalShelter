@@ -1,0 +1,202 @@
+@import "../../main.css";
+
+img {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+}
+
+#index{
+    display: none;
+}
+
+
+#back {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    left: 10%;
+    top: 17.96%;
+    color: var(--colour-secondary);
+}
+
+#back a {
+    color: var(--colour-secondary);
+}
+
+#back i {
+    font-size: 60px
+}
+
+#h1AddAnimal {
+    position: absolute;
+    left: 23.28%;
+    right: 20.47%;
+    top: 17.96%;
+    bottom: 75.09%;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 61px;
+
+    color: var(--colour-secondary);
+}
+
+hr {
+    position: absolute;
+    top: 25%;
+    bottom: 75%;
+    left: 18%;
+    right: 18%;
+
+    border: 1px solid var(--colour-secondary);
+}
+
+#h2AddAnimal {
+    font-size: 24px;
+
+    color: var(--colour-secondary);
+}
+
+
+.InsideAddAnimal form #outerdiv{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    position: absolute;
+    left: 18.75%;
+    right: 18.75%;
+    top: 40%;
+    gap: 100px;
+}
+
+.InsideAddAnimal #divPhoto{
+    display: grid;
+}
+
+.file-field input-field {
+    border-color: red;
+}
+.InsideAddAnimal #divOther{
+    display: grid;
+    width: 500px
+}
+
+.InsideAddAnimal #divOther div {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.InsideAddAnimal button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 35px;
+    gap: 20px;
+
+    position: absolute;
+    left: 46.3%;
+    right: 46.25%;
+    top: 80.93%;
+    bottom: 14.44%;
+
+    background: var(--colour-white);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+#Name, #Species, #Age, #Gender, #Description, #Photo {
+    border-radius: 4px;
+    border:1px solid var(--colour-secondary);
+    background: var(--colour-lightgray);
+    font-family: 'Montserrat';
+    font-weight: 600;
+}
+
+#Name, #Species, #Age, #Gender {
+    padding-left: 15px;
+    width: 300px;
+}
+
+#Photo {
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+}
+
+#Photo:active {
+    background: var(--colour-white);
+}
+
+#Description {
+    width: 300px;
+    height: 200px;
+    text-align: justify;
+    padding-left: 15px;
+    padding-bottom: 170px;
+    padding: 10px;
+}
+
+textarea {
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    resize: auto;
+    cursor: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    column-count: initial !important;
+}
+
+.custom-file-input {
+    color: transparent;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input::before {
+    content: 'Select photo';
+    color: var(--colour-secondary);
+    font-family: 'Montserrat';
+    font-size: 24px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+
+    padding-top: 45%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.custom-file-input:active {
+    outline: 0;
+}
+.custom-file-input:active::before {
+    background: transparent; 
+}
+
+
